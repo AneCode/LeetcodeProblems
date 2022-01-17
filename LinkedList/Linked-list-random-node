@@ -1,0 +1,43 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+    ListNode* head;
+    int count;
+public:
+    Solution(ListNode* mhead) {
+        head=mhead;
+        ListNode*temp=mhead;
+        int mcount=0;
+        while(temp){
+            mcount++;
+            temp=temp->next;
+        }
+        count=mcount;
+    }
+    
+    int getRandom() {
+          if(head==NULL)
+              return 0;
+         cout<<"C:"<<count;
+          int x=rand()%count;
+        ListNode*temp=head; 
+        while(x--){
+           temp=temp->next; 
+        }
+        return temp->val;
+    }
+};
+
+/**
+ * Your Solution object will be instantiated and called as such:
+ * Solution* obj = new Solution(head);
+ * int param_1 = obj->getRandom();
+ */
