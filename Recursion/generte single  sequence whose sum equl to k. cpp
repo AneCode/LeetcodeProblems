@@ -1,0 +1,42 @@
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void print(vector<int>v){
+    cout<<"{";
+    for(auto x:v)
+     cout<<x<<",";
+     cout<<"}\n";
+}
+bool generate(vector<int> &v,vector<int>&res,int n,int i,int k,int sum)
+{
+    if(i==n)
+     {
+         if(sum==k){
+         print(res); 
+         return true;
+         } 
+       return false;
+     }
+     res.push_back(v[i]);
+     sum+=v[i];
+     if(generate(v,res,n,i+1,k,sum)==true)
+      return true;
+      sum-=res[res.size()-1];
+     res.pop_back();
+     if(generate(v,res,n,i+1,k,sum)==true)
+     return true;
+     return false;
+
+}
+
+// Driver Program to test above functions
+int main()
+{
+   vector<int>v{1,2,1},res;
+   int k=2;
+   int n=v.size();
+  generate(v,res,n,0,k,0);    
+	
+	return(0);
+}
